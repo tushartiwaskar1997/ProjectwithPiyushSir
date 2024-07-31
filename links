@@ -1,0 +1,36 @@
+http://localhost:8080/save
+{
+  "id": "3", 
+  "studname": "kartik",
+  "city": "nagpy",
+  "email": "avbv"
+}
+ id fild ill be not reqired if in data base id is  primary key and auto grnrated 
+  
+  
+  for put mapping i am directly sending the student jsone file 
+  http://localhost:8080/update
+    {
+        "id": 4,
+        "studname": "adity",
+        "city": "xyz",
+        "email": "avbv"
+    }
+    
+    studentname email file can alos be blanck "".
+    
+    
+    for this http://localhost:8080/getbyname?name=tushar 
+    in repo directly rite the query for 
+    findBystudentname(String name)
+    
+    previously iwas using jakarta but swagger was not working  .
+    after research i came to know that swaggers  work with older version  of spring boot .
+    so i reduced to older version of 2.7.11 .
+    but then jakarta was not working .
+    in obder to work with older we have to use javax api .
+    javax copyright is managed by oracle upto java8  after that writes  were given to eclipses  and they remain it to jakarta .
+    and  changed the version to 2.7.11 spring and java to 17.
+    
+    
+    
