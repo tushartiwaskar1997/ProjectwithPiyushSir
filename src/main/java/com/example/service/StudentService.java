@@ -30,10 +30,11 @@ public class StudentService {
 		return stud ;
 	}
 	
-	public String  updatethecityusingrollno(Integer num , String city )
+	public Student  updatethecityusingrollno(Integer num , String city )
 	{
 		studentrepo.updatecity(num, city);
-		return "Succeffula !!" ;
+		
+		return findthestudentbyid(num).get();
 		
 	}
 	
