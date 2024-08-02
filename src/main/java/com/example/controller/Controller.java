@@ -88,6 +88,11 @@ public class Controller {
 		return "errror occured " ;
 	} 
 	
+	@GetMapping("/deletestudent")
+	public String  DeleteTheStudentById(@RequestParam Integer  num)
+	{
+		return  studservice.DeleteStudentbyId(num);
+	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public Map<String,String>  methodforvalisation(MethodArgumentNotValidException ErrorGenerated){

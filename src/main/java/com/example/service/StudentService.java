@@ -45,4 +45,8 @@ public class StudentService {
 	public List<Student>  savthstdntthghlst(List<Student> lst){
 		return studentrepo.saveAll(lst);
 	}
+	public String  DeleteStudentbyId(Integer num) {
+		studentrepo.deleteById(num);
+		return "student deleted successfully";
+	}
 }

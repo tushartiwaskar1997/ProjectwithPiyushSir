@@ -78,5 +78,14 @@ public class TestController {
 
 		 assertEquals(updatedstudent_after.toString(), response.toString());
 	 }
+	 
+	 @Test
+	 public void testDeleteTheStudentById() {
+		 String expected = "student deleted successfully";
+		 when(studentservice.DeleteStudentbyId(anyInt())).thenReturn("student deleted successfully");
+		 String actualoutput = controller.DeleteTheStudentById(1);
+		 assertEquals(expected, actualoutput);
+		 
+	 }
 
 }
