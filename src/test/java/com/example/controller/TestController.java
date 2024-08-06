@@ -74,7 +74,7 @@ public class TestController {
 		 Student updatedstudent_after =  new Student(1, "tushar", "chi", "null");
 		 when(studentservice.findthestudentbyid(anyInt())).thenReturn( Optional.of(stud1));
 		 when(studentservice.updatethecityusingrollno(1, "chi")).thenReturn(updatedstudent_after);
-		 Student  response  =  controller.updatethestudentcity(updatedstudentcity);
+		 Student  response  =  controller.updatethestudentcity(updatedstudentcity).getBody();
 
 		 assertEquals(updatedstudent_after.toString(), response.toString());
 	 }
@@ -85,7 +85,13 @@ public class TestController {
 		 when(studentservice.DeleteStudentbyId(anyInt())).thenReturn("student deleted successfully");
 		 String actualoutput = controller.DeleteTheStudentById(1);
 		 assertEquals(expected, actualoutput);
-		 
+	 }
+	 @Test
+	 public void  testgetthelistofname() {
+		 List<Student> expected =   getstudentlist();
+		 when(studentservice.getthesudentbyname(anyString())).thenReturn(expected);
+		 List<Student> actual_list = controller.getthelistofname("xyz");
+		 assertEquals(expected,actual_list );
 	 }
 
 }

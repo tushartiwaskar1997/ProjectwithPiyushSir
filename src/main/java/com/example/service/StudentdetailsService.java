@@ -25,4 +25,6 @@ public class StudentdetailsService {
 		
 		return  studentdetailsrepo.findBycity(city);
 	}
+	
+	
 }

@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 //import jakarta.persistence.Entity;
 //import jakarta.persistence.GeneratedValue;
 //import jakarta.persistence.GenerationType;
@@ -23,10 +25,17 @@ public class Student {
 	@NotEmpty(message = "please enter the nameeee ")
 	private String studname;
 	private String city;
+	@JsonIgnore
 	private String email;
 	public Student(Integer id, String studname, String city, String email) {
 		super();
 		this.id = id;
+		this.studname = studname;
+		this.city = city;
+		this.email = email;
+	}
+	public Student( String studname, String city, String email) {
+		super();
 		this.studname = studname;
 		this.city = city;
 		this.email = email;

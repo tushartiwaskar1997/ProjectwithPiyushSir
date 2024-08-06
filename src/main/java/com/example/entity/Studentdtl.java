@@ -42,6 +42,14 @@ public class Studentdtl {
 		this.city = city;
 		this.marks = marks;
 	}
+	public Studentdtl( @NotEmpty(message = "please enter the nameeee ") String stdnam, String lastnam,
+			City city, Integer marks) {
+		super();
+		this.stdnam = stdnam;
+		this.lastnam = lastnam;
+		this.city = city;
+		this.marks = marks;
+	}
 	public Integer getId() {
 		return id;
 	}

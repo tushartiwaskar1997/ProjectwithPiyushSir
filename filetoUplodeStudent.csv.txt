@@ -1,0 +1,5 @@
+studname,city,email
+Tushar,ngp,tusar@gmail.com
+udhav,kolapur,udhav@gmail.com
+anagha,ngp,anagha@gmail.com
+diti,ngpmdipti@gmail.com
