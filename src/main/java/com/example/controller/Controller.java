@@ -1,6 +1,9 @@
 package com.example.controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +12,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -40,6 +44,11 @@ public class Controller {
 	
 	@Autowired
 	private ImageService imageservice;
+	
+	private static final String dectory = "C:\\Users\\ADMIN\\Desktop\\aws   devops";
+	
+	@Value("${file.read.anykey}")
+	private String fileloacation ; // this variable will get the value from the application.prp using @value
 	
 	@GetMapping("/demo")
 	public String getstringfrom() {
@@ -129,11 +138,27 @@ public class Controller {
 			//return  ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,"").body(imagreal.getImagedata());
 			//return  ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,"inline").body(imagreal.getImagedata());
 			return  ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,"")
-					.contentType(MediaType.IMAGE_PNG)
+					.contentType(MediaType.IMAGE_PNG)  // this is helping us to direclty view the image  
 					.body(imagreal.getImagedata());
 		}  
-	
 		return  new  ResponseEntity<>( "Please check the id of image ",HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping("/readthefile")
+	public ResponseEntity<?> readthefilefromtheurl(@RequestParam("onlyfilenamewithextension") String  filename ) {
+		Path paht =  Paths.get(dectory, filename);
+		System.out.println(paht);
+		String  respoinse =   studservice.readthefile(paht);
+		return  new ResponseEntity<>(respoinse ,HttpStatus.OK); 
+	}
+	///this method will get  the url from the appl.properties file 
+	@GetMapping("/readrthefrom_app_prop")
+	public ResponseEntity<?> readthefilefromapplicationproperties(@RequestParam("filename") String filename ){
+		Path path =  Paths.get(fileloacation, filename);
+		System.out.println("path "+path);
+		String response = studservice.readthefile(path);
+		return  new ResponseEntity<>(response,HttpStatus.OK);
+		
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)

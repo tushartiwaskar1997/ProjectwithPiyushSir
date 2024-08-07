@@ -2,9 +2,10 @@ package com.example.service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.entity.Student;
-import com.example.entity.Studentdtl;
 import com.example.repository.StudentRepository;
 
 @Service
@@ -70,11 +70,21 @@ public class StudentService {
 					listofstudent.add(stud);
 				}
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+	}
 		
 		return  studentrepo.saveAll(listofstudent);
+	}
+	
+	public String  readthefile(Path url  ) {
+		//Path path =  Paths.get(url);
+		try {
+			String contex = Files.readString(url);
+			return contex;
+		} catch (IOException e) {
+			
+			return "please enter the correct file url ,url given -: "+url ;
+		}
 	}
 }
