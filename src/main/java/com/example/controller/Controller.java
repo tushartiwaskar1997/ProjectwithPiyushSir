@@ -147,18 +147,16 @@ public class Controller {
 	@GetMapping("/readthefile")
 	public ResponseEntity<?> readthefilefromtheurl(@RequestParam("onlyfilenamewithextension") String  filename ) {
 		Path paht =  Paths.get(dectory, filename);
-		System.out.println(paht);
 		String  respoinse =   studservice.readthefile(paht);
 		return  new ResponseEntity<>(respoinse ,HttpStatus.OK); 
 	}
+	
 	///this method will get  the url from the appl.properties file 
 	@GetMapping("/readrthefrom_app_prop")
 	public ResponseEntity<?> readthefilefromapplicationproperties(@RequestParam("filename") String filename ){
 		Path path =  Paths.get(fileloacation, filename);
-		System.out.println("path "+path);
 		String response = studservice.readthefile(path);
 		return  new ResponseEntity<>(response,HttpStatus.OK);
-		
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)

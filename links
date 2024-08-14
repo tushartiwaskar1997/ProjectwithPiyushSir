@@ -31,6 +31,14 @@ http://localhost:8080/save
     in obder to work with older we have to use javax api .
     javax copyright is managed by oracle upto java8  after that writes  were given to eclipses  and they remain it to jakarta .
     and  changed the version to 2.7.11 spring and java to 17.
+
+
+create table Images(
+id int not null primary key,
+imagename varchar(255),
+imagetype varchar(255),
+imagedata longblob not null
+);
     
     
     
